@@ -35,8 +35,20 @@ button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);
 .day-num{font-weight:700;margin-bottom:4px}
 .day-event{display:block;width:100%;text-align:left;background:var(--accent-soft);border:0;border-radius:5px;padding:3px 5px;margin:3px 0;font-size:.75rem;overflow-wrap:anywhere}
 footer{color:var(--muted);font-size:.8rem;margin-top:18px}
-@media(max-width:560px){main{padding:18px 10px 32px}h1{font-size:1.4rem}.event{grid-template-columns:84px 1fr;padding:13px 12px;gap:8px}.day{min-height:72px;padding:4px}.day-event{font-size:.67rem;padding:2px}.calendar{padding:6px}.month-nav{margin-left:0;width:100%;justify-content:center}}
-</style>
+@media(max-width:560px){
+  main{padding:18px 10px 32px}
+  h1{font-size:1.4rem}
+  .event{
+    grid-template-columns:1fr;
+    padding:13px 12px;
+    gap:2px;
+  }
+  .date{white-space:normal}
+  .day{min-height:72px;padding:4px}
+  .day-event{font-size:.67rem;padding:2px}
+  .calendar{padding:6px}
+  .month-nav{margin-left:0;width:100%;justify-content:center}
+}
 </head>
 <body>
 <main>
