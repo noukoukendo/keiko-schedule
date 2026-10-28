@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="ja">
 <head>
@@ -5,123 +6,480 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>稽古予定</title>
 <style>
-:root{--ink:#20252b;--muted:#667085;--line:#e4e7ec;--bg:#f7f8fa;--accent:#235b45;--accent-soft:#eaf3ee}
-*{box-sizing:border-box}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
-main{max-width:980px;margin:0 auto;padding:24px 16px 48px}
-header{margin-bottom:22px}
-h1{font-size:1.7rem;margin:0 0 6px}
-.subtitle{margin:0;color:var(--muted);font-size:.95rem}
-.toolbar{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:18px 0}
-button,select{font:inherit;border:1px solid var(--line);border-radius:10px;background:#fff;padding:9px 12px;color:var(--ink)}
-button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:white}
-.month-nav{display:flex;gap:8px;align-items:center;margin-left:auto}
-#monthLabel{min-width:115px;text-align:center;font-weight:700}
-.notice{font-size:.9rem;color:var(--muted);margin:12px 0}
-#content{background:white;border:1px solid var(--line);border-radius:16px;overflow:hidden}
-.list{list-style:none;margin:0;padding:0}
-.event{padding:15px 18px;border-bottom:1px solid var(--line);display:grid;grid-template-columns:110px 1fr;gap:14px}
-.event:last-child{border-bottom:0}
-.date{font-weight:700;white-space:nowrap}
-.event-title{font-weight:700}
-.details{color:var(--muted);font-size:.92rem;margin-top:3px}
-.pill{display:inline-block;border-radius:999px;background:var(--accent-soft);color:var(--accent);padding:2px 8px;font-size:.8rem;margin-right:6px}
-.empty{padding:32px 18px;text-align:center;color:var(--muted)}
-.calendar{padding:12px}
-.weekdays,.days{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:4px}
-.weekday{text-align:center;color:var(--muted);font-size:.8rem;padding:7px 0}
-.day{min-height:95px;border:1px solid var(--line);border-radius:8px;padding:6px;font-size:.82rem;overflow:hidden}
-.day.other{background:#fafafa;color:#a0a5ad}
-.day-num{font-weight:700;margin-bottom:4px}
-.day-event{display:block;width:100%;text-align:left;background:var(--accent-soft);border:0;border-radius:5px;padding:3px 5px;margin:3px 0;font-size:.75rem;overflow-wrap:anywhere}
-footer{color:var(--muted);font-size:.8rem;margin-top:18px}
-@media(max-width:560px){
-  main{padding:18px 10px 32px}
-  h1{font-size:1.4rem}
- .event{grid-template-columns:1fr;padding:13px 12px;gap:10px;}
-  .date{white-space:normal}
-  .day{min-height:72px;padding:4px}
-  .day-event{font-size:.67rem;padding:2px}
-  .calendar{padding:6px}
-  .month-nav{margin-left:0;width:100%;justify-content:center}
+:root {
+  --ink: #20252b;
+  --muted: #667085;
+  --line: #e4e7ec;
+  --bg: #f7f8fa;
+  --accent: #235b45;
+  --accent-soft: #eaf3ee;
 }
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  line-height: 1.55;
+}
+
+main {
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+header {
+  margin-bottom: 22px;
+}
+
+h1 {
+  font-size: 1.7rem;
+  margin: 0 0 6px;
+}
+
+.subtitle {
+  margin: 0;
+  color: var(--muted);
+  font-size: .95rem;
+}
+
+.toolbar {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 18px 0;
+}
+
+button, select {
+  font: inherit;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #fff;
+  padding: 9px 12px;
+  color: var(--ink);
+}
+
+button[aria-pressed="true"] {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.month-nav {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-left: auto;
+}
+
+#monthLabel {
+  min-width: 115px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.notice {
+  font-size: .9rem;
+  color: var(--muted);
+  margin: 12px 0;
+}
+
+#content {
+  background: white;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* 日付と予定名を必ず別の行に配置 */
+.event {
+  padding: 15px 18px;
+  border-bottom: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 4px;
+}
+
+.event:last-child {
+  border-bottom: 0;
+}
+
+.date {
+  font-weight: 700;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.event-title {
+  font-weight: 700;
+  overflow-wrap: anywhere;
+}
+
+.details {
+  color: var(--muted);
+  font-size: .92rem;
+  margin-top: 3px;
+  overflow-wrap: anywhere;
+}
+
+.pill {
+  display: inline-block;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  padding: 2px 8px;
+  font-size: .8rem;
+  margin-right: 6px;
+}
+
+.empty {
+  padding: 32px 18px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.calendar {
+  padding: 12px;
+}
+
+.weekdays, .days {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.weekday {
+  text-align: center;
+  color: var(--muted);
+  font-size: .8rem;
+  padding: 7px 0;
+}
+
+.day {
+  min-height: 95px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 6px;
+  font-size: .82rem;
+  overflow: hidden;
+}
+
+.day.other {
+  background: #fafafa;
+  color: #a0a5ad;
+}
+
+.day-num {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.day-event {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: var(--accent-soft);
+  border: 0;
+  border-radius: 5px;
+  padding: 3px 5px;
+  margin: 3px 0;
+  font-size: .75rem;
+  overflow-wrap: anywhere;
+}
+
+footer {
+  color: var(--muted);
+  font-size: .8rem;
+  margin-top: 18px;
+}
+
+@media (max-width: 560px) {
+  main {
+    padding: 18px 10px 32px;
+  }
+
+  h1 {
+    font-size: 1.4rem;
+  }
+
+  .event {
+    grid-template-columns: minmax(0, 1fr);
+    padding: 13px 12px;
+    gap: 4px;
+  }
+
+  .date {
+    white-space: normal;
+  }
+
+  .event-title {
+    line-height: 1.5;
+  }
+
+  .day {
+    min-height: 72px;
+    padding: 4px;
+  }
+
+  .day-event {
+    font-size: .67rem;
+    padding: 2px;
+  }
+
+  .calendar {
+    padding: 6px;
+  }
+
+  .month-nav {
+    margin-left: 0;
+    width: 100%;
+    justify-content: center;
+  }
+}
+</style>
 </head>
 <body>
 <main>
-<header>
-  <h1>稽古予定</h1>
-  <p class="subtitle">稽古・OB稽古会の公開予定</p>
-</header>
-<div class="toolbar" aria-label="表示設定">
-  <button id="listBtn" aria-pressed="true">リスト表示</button>
-  <button id="calendarBtn" aria-pressed="false">カレンダー表示</button>
-  <select id="typeFilter" aria-label="予定の種類">
-    <option value="all">すべての予定</option>
-    <option>稽古（工学部）</option>
-    <option>稽古（農学部）</option>
-    <option>OB稽古会（工学部）</option>
-    <option>OB稽古会（農学部）</option>
-  </select>
-  <div class="month-nav">
-    <button id="prevMonth" aria-label="前の月">‹</button>
-    <span id="monthLabel"></span>
-    <button id="nextMonth" aria-label="次の月">›</button>
+  <header>
+    <h1>稽古予定</h1>
+    <p class="subtitle">稽古・OB稽古会の公開予定</p>
+  </header>
+
+  <div class="toolbar" aria-label="表示設定">
+    <button id="listBtn" aria-pressed="true">リスト表示</button>
+    <button id="calendarBtn" aria-pressed="false">カレンダー表示</button>
+
+    <select id="typeFilter" aria-label="予定の種類">
+      <option value="all">すべての予定</option>
+      <option>稽古（工学部）</option>
+      <option>稽古（農学部）</option>
+      <option>OB稽古会（工学部）</option>
+      <option>OB稽古会（農学部）</option>
+    </select>
+
+    <div class="month-nav">
+      <button id="prevMonth" aria-label="前の月">‹</button>
+      <span id="monthLabel"></span>
+      <button id="nextMonth" aria-label="次の月">›</button>
+    </div>
   </div>
-</div>
-<p class="notice" id="status">予定を読み込んでいます…</p>
-<section id="content" aria-live="polite"></section>
-<footer>このページには、公開対象として登録された予定のみを掲載します。</footer>
+
+  <p class="notice" id="status">予定を読み込んでいます…</p>
+  <section id="content" aria-live="polite"></section>
+
+  <footer>
+    このページには、公開対象として登録された予定のみを掲載します。
+  </footer>
 </main>
+
 <script>
 const ALLOWED = new Set([
-  "稽古（工学部）","稽古（農学部）","OB稽古会（工学部）","OB稽古会（農学部）"
+  "稽古（工学部）",
+  "稽古（農学部）",
+  "OB稽古会（工学部）",
+  "OB稽古会（農学部）"
 ]);
-const state = { events: [], view: "list", month: new Date(new Date().getFullYear(), new Date().getMonth(), 1), error: "" };
+
+const state = {
+  events: [],
+  view: "list",
+  month: new Date(
+    new Date().getFullYear(),
+    new Date().getMonth(),
+    1
+  ),
+  error: ""
+};
+
 const $ = id => document.getElementById(id);
-const escapeHTML = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+const escapeHTML = s =>
+  String(s ?? "").replace(/[&<>"']/g, c => ({
+    "&": "&amp;",
+    "<": "&lt;",
+    ">": "&gt;",
+    '"': "&quot;",
+    "'": "&#39;"
+  }[c]));
+
 const dateOf = e => new Date(`${e.date}T00:00:00`);
-const fmtDate = d => `${d.getFullYear()}年${d.getMonth()+1}月${d.getDate()}日（${"日月火水木金土"[d.getDay()]}）`;
-function visibleEvents(){
+
+const fmtDate = d =>
+  `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${"日月火水木金土"[d.getDay()]}）`;
+
+function visibleEvents() {
   const type = $("typeFilter").value;
-  return state.events.filter(e => ALLOWED.has(e.title) && (type==="all" || e.title===type))
-    .filter(e => dateOf(e).getFullYear()===state.month.getFullYear() && dateOf(e).getMonth()===state.month.getMonth())
-    .sort((a,b) => (a.date+a.startTime).localeCompare(b.date+b.startTime));
+
+  return state.events
+    .filter(e =>
+      ALLOWED.has(e.title) &&
+      (type === "all" || e.title === type)
+    )
+    .filter(e =>
+      dateOf(e).getFullYear() === state.month.getFullYear() &&
+      dateOf(e).getMonth() === state.month.getMonth()
+    )
+    .sort((a, b) =>
+      (a.date + (a.startTime || "")).localeCompare(
+        b.date + (b.startTime || "")
+      )
+    );
 }
-function render(){
-  $("monthLabel").textContent = `${state.month.getFullYear()}年${state.month.getMonth()+1}月`;
-  $("listBtn").setAttribute("aria-pressed", state.view==="list");
-  $("calendarBtn").setAttribute("aria-pressed", state.view==="calendar");
+
+function render() {
+  $("monthLabel").textContent =
+    `${state.month.getFullYear()}年${state.month.getMonth() + 1}月`;
+
+  $("listBtn").setAttribute(
+    "aria-pressed",
+    state.view === "list"
+  );
+
+  $("calendarBtn").setAttribute(
+    "aria-pressed",
+    state.view === "calendar"
+  );
+
   const events = visibleEvents();
-  $("status").textContent = state.error || `公開対象の予定：${events.length}件`;
-  if(state.view==="list") renderList(events); else renderCalendar(events);
-}
-function renderList(events){
-  const root=$("content");
-  if(!events.length){root.innerHTML='<div class="empty">この月の公開予定はありません。</div>';return;}
-  root.innerHTML='<ul class="list">'+events.map(e=>`<li class="event"><div class="date">${escapeHTML(fmtDate(dateOf(e)))}</div><div><div class="event-title">${escapeHTML(e.title)}</div><div class="details">${escapeHTML([e.startTime && e.endTime ? `${e.startTime}〜${e.endTime}` : e.startTime || "",e.location||"",e.note||""].filter(Boolean).join(" ・ ")||"時間・場所の記載なし")}</div></div></li>`).join("")+'</ul>';
-}
-function renderCalendar(events){
-  const y=state.month.getFullYear(), m=state.month.getMonth();
-  const first=new Date(y,m,1), start=new Date(y,m,1-first.getDay());
-  const days=Array.from({length:42},(_,i)=>{const d=new Date(start);d.setDate(start.getDate()+i);return d;});
-  let html='<div class="calendar"><div class="weekdays">'+["日","月","火","水","木","金","土"].map(x=>`<div class="weekday">${x}</div>`).join("")+'</div><div class="days">';
-  for(const d of days){
-    const key=`${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,"0")}-${String(d.getDate()).padStart(2,"0")}`;
-    const today=events.filter(e=>e.date===key);
-    html+=`<div class="day ${d.getMonth()!==m?'other':''}"><div class="day-num">${d.getDate()}</div>${today.map(e=>`<span class="day-event" title="${escapeHTML(e.title)}">${escapeHTML(e.startTime?e.startTime+" ":"")}${escapeHTML(e.title)}</span>`).join("")}</div>`;
+
+  $("status").textContent =
+    state.error || `公開対象の予定：${events.length}件`;
+
+  if (state.view === "list") {
+    renderList(events);
+  } else {
+    renderCalendar(events);
   }
-  $("content").innerHTML=html+'</div></div>';
 }
-$("listBtn").addEventListener("click",()=>{state.view="list";render()});
-$("calendarBtn").addEventListener("click",()=>{state.view="calendar";render()});
-$("typeFilter").addEventListener("change",render);
-$("prevMonth").addEventListener("click",()=>{state.month.setMonth(state.month.getMonth()-1);render()});
-$("nextMonth").addEventListener("click",()=>{state.month.setMonth(state.month.getMonth()+1);render()});
-fetch("./events.json",{cache:"no-store"}).then(r=>{if(!r.ok)throw new Error("events.jsonを読み込めません");return r.json()}).then(data=>{
-  state.events=Array.isArray(data.events)?data.events:[];
-  if(data.demo===true) state.error="現在は表示確認用のサンプルデータです。実際の稽古予定ではありません。";
+
+function renderList(events) {
+  const root = $("content");
+
+  if (!events.length) {
+    root.innerHTML =
+      '<div class="empty">この月の公開予定はありません。</div>';
+    return;
+  }
+
+  root.innerHTML =
+    '<ul class="list">' +
+    events.map(e => `
+      <li class="event">
+        <div class="date">${escapeHTML(fmtDate(dateOf(e)))}</div>
+        <div>
+          <div class="event-title">${escapeHTML(e.title)}</div>
+          <div class="details">${
+            escapeHTML([
+              e.startTime && e.endTime
+                ? `${e.startTime}〜${e.endTime}`
+                : e.startTime || "",
+              e.location || "",
+              e.note || ""
+            ].filter(Boolean).join(" ・ ") || "時間・場所の記載なし")
+          }</div>
+        </div>
+      </li>
+    `).join("") +
+    "</ul>";
+}
+
+function renderCalendar(events) {
+  const y = state.month.getFullYear();
+  const m = state.month.getMonth();
+
+  const first = new Date(y, m, 1);
+  const start = new Date(y, m, 1 - first.getDay());
+
+  const days = Array.from({ length: 42 }, (_, i) => {
+    const d = new Date(start);
+    d.setDate(start.getDate() + i);
+    return d;
+  });
+
+  let html =
+    '<div class="calendar"><div class="weekdays">' +
+    ["日", "月", "火", "水", "木", "金", "土"]
+      .map(x => `<div class="weekday">${x}</div>`)
+      .join("") +
+    '</div><div class="days">';
+
+  for (const d of days) {
+    const key =
+      `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+
+    const today = events.filter(e => e.date === key);
+
+    html += `
+      <div class="day ${d.getMonth() !== m ? "other" : ""}">
+        <div class="day-num">${d.getDate()}</div>
+        ${today.map(e => `
+          <span class="day-event" title="${escapeHTML(e.title)}">
+            ${escapeHTML(e.startTime ? e.startTime + " " : "")}${escapeHTML(e.title)}
+          </span>
+        `).join("")}
+      </div>
+    `;
+  }
+
+  $("content").innerHTML = html + "</div></div>";
+}
+
+$("listBtn").addEventListener("click", () => {
+  state.view = "list";
   render();
-}).catch(()=>{state.error="予定データを読み込めません。公開設定と events.json を確認してください。";render()});
+});
+
+$("calendarBtn").addEventListener("click", () => {
+  state.view = "calendar";
+  render();
+});
+
+$("typeFilter").addEventListener("change", render);
+
+$("prevMonth").addEventListener("click", () => {
+  state.month.setMonth(state.month.getMonth() - 1);
+  render();
+});
+
+$("nextMonth").addEventListener("click", () => {
+  state.month.setMonth(state.month.getMonth() + 1);
+  render();
+});
+
+fetch("./events.json", { cache: "no-store" })
+  .then(r => {
+    if (!r.ok) {
+      throw new Error("events.jsonを読み込めません");
+    }
+    return r.json();
+  })
+  .then(data => {
+    state.events = Array.isArray(data.events) ? data.events : [];
+
+    if (data.demo === true) {
+      state.error =
+        "現在は表示確認用のサンプルデータです。実際の稽古予定ではありません。";
+    }
+
+    render();
+  })
+  .catch(() => {
+    state.error =
+      "予定データを読み込めません。公開設定と events.json を確認してください。";
+    render();
+  });
 </script>
 </body>
 </html>
