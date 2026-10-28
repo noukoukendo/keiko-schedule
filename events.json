@@ -1,0 +1,21 @@
+{
+  "demo": true,
+  "events": [
+    {
+      "date": "2026-11-01",
+      "title": "稽古（工学部）",
+      "startTime": "18:00",
+      "endTime": "",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-11-03",
+      "title": "稽古（工学部）",
+      "startTime": "09:00",
+      "endTime": "",
+      "location": "",
+      "note": ""
+    }
+  ]
+}
