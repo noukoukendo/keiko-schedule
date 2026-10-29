@@ -377,23 +377,25 @@ function renderList(events) {
 
   root.innerHTML =
     '<ul class="list">' +
-    events.map(e => `
-      <li class="event">
-        <div class="date">${escapeHTML(fmtDate(dateOf(e)))}</div>
-        <div>
-          <div class="event-title">${escapeHTML(e.title)}</div>
-          <div class="details">${
-            escapeHTML([
-              e.startTime && e.endTime
-                ? `${e.startTime}〜${e.endTime}`
-                : e.startTime || "",
-              e.location || "",
-              e.note || ""
-            ].filter(Boolean).join(" ・ ") || "時間・場所の記載なし")
-          }</div>
-        </div>
-      </li>
-    `).join("") +
+    events.map(e => {
+      const details = [
+        e.startTime && e.endTime
+          ? `${e.startTime}〜${e.endTime}`
+          : e.startTime || "",
+        e.location || "",
+        e.note || ""
+      ].filter(Boolean).join(" ・ ");
+
+      return `
+        <li class="event">
+          <div class="date">${escapeHTML(fmtDate(dateOf(e)))}</div>
+          <div>
+            <div class="event-title">${escapeHTML(e.title)}</div>
+            ${details ? `<div class="details">${escapeHTML(details)}</div>` : ""}
+          </div>
+        </li>
+      `;
+    }).join("") +
     "</ul>";
 }
 
