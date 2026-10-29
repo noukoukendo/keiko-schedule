@@ -127,6 +127,13 @@ button[aria-pressed="true"] {
   overflow-wrap: anywhere;
 }
 
+/* OB稽古会・OB総会は赤字の太字で強調 */
+.event-ob .event-title,
+.day-event.event-ob {
+  color: #c62828;
+  font-weight: 800;
+}
+
 .details {
   color: var(--muted);
   font-size: .92rem;
@@ -386,8 +393,9 @@ function renderList(events) {
         e.note || ""
       ].filter(Boolean).join(" ・ ");
 
+      const isObEvent = e.title.startsWith("OB稽古会") || e.title === "OB総会";
       return `
-        <li class="event">
+        <li class="event ${isObEvent ? "event-ob" : ""}">
           <div class="date">${escapeHTML(fmtDate(dateOf(e)))}</div>
           <div>
             <div class="event-title">${escapeHTML(e.title)}</div>
@@ -428,11 +436,14 @@ function renderCalendar(events) {
     html += `
       <div class="day ${d.getMonth() !== m ? "other" : ""}">
         <div class="day-num">${d.getDate()}</div>
-        ${today.map(e => `
-          <span class="day-event" title="${escapeHTML(e.title)}">
+        ${today.map(e => {
+          const isObEvent = e.title.startsWith("OB稽古会") || e.title === "OB総会";
+          return `
+          <span class="day-event ${isObEvent ? "event-ob" : ""}" title="${escapeHTML(e.title)}">
             ${escapeHTML(e.startTime ? e.startTime + " " : "")}${escapeHTML(e.title)}
           </span>
-        `).join("")}
+        `;
+        }).join("")}
       </div>
     `;
   }
