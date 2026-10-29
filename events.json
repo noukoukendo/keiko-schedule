@@ -1,8 +1,8 @@
 {
-  "demo": true,
+  "demo": false,
   "events": [
     {
-      "date": "2026-11-01",
+      "date": "2026-10-01",
       "title": "稽古（工学部）",
       "startTime": "18:00",
       "endTime": "",
@@ -10,7 +10,95 @@
       "note": ""
     },
     {
-      "date": "2026-11-03",
+      "date": "2026-10-03",
+      "title": "稽古（工学部）",
+      "startTime": "09:00",
+      "endTime": "",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-08",
+      "title": "稽古（工学部）",
+      "startTime": "18:00",
+      "endTime": "",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-10",
+      "title": "稽古（工学部）",
+      "startTime": "09:00",
+      "endTime": "",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-13",
+      "title": "稽古（農学部）",
+      "startTime": "18:30",
+      "endTime": "",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-15",
+      "title": "稽古（工学部）",
+      "startTime": "18:00",
+      "endTime": "",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-17",
+      "title": "稽古（工学部）",
+      "startTime": "09:00",
+      "endTime": "",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-20",
+      "title": "稽古（農学部）",
+      "startTime": "18:30",
+      "endTime": "",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-22",
+      "title": "稽古（工学部）",
+      "startTime": "18:00",
+      "endTime": "",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-24",
+      "title": "稽古（工学部）",
+      "startTime": "09:00",
+      "endTime": "",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-27",
+      "title": "稽古（農学部）",
+      "startTime": "18:30",
+      "endTime": "",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-29",
+      "title": "稽古（工学部）",
+      "startTime": "18:00",
+      "endTime": "",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-31",
       "title": "稽古（工学部）",
       "startTime": "09:00",
       "endTime": "",
