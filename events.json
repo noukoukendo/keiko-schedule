@@ -1,19 +1,117 @@
 {
   "demo": false,
   "events": [
-    {"date":"2026-10-01","title":"稽古（工学部）","startTime":"18:30","endTime":"20:00","location":"","note":""},
-    {"date":"2026-10-03","title":"稽古（工学部）","startTime":"09:30","endTime":"11:00","location":"","note":""},
-    {"date":"2026-10-08","title":"稽古（工学部）","startTime":"18:30","endTime":"20:00","location":"","note":""},
-    {"date":"2026-10-10","title":"稽古（工学部）","startTime":"09:30","endTime":"11:00","location":"","note":""},
-    {"date":"2026-10-13","title":"稽古（農学部）","startTime":"19:00","endTime":"20:30","location":"","note":""},
-    {"date":"2026-10-15","title":"稽古（工学部）","startTime":"18:30","endTime":"20:00","location":"","note":""},
-    {"date":"2026-10-17","title":"稽古（工学部）","startTime":"09:30","endTime":"11:00","location":"","note":""},
-    {"date":"2026-10-20","title":"稽古（農学部）","startTime":"19:00","endTime":"20:30","location":"","note":""},
-    {"date":"2026-10-22","title":"稽古（工学部）","startTime":"18:30","endTime":"20:00","location":"","note":""},
-    {"date":"2026-10-24","title":"稽古（工学部）","startTime":"09:30","endTime":"11:00","location":"","note":""},
-    {"date":"2026-10-27","title":"稽古（農学部）","startTime":"19:00","endTime":"20:30","location":"","note":""},
-    {"date":"2026-10-29","title":"稽古（工学部）","startTime":"18:30","endTime":"20:00","location":"","note":""},
-    {"date":"2026-10-31","title":"OB総会","startTime":"","endTime":"","location":"","note":""},
-    {"date":"2026-10-31","title":"稽古（工学部）","startTime":"09:30","endTime":"11:00","location":"","note":""}
+    {
+      "date": "2026-10-01",
+      "title": "稽古（工学部）",
+      "startTime": "19:00",
+      "endTime": "20:00",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-03",
+      "title": "稽古（工学部）",
+      "startTime": "09:30",
+      "endTime": "11:00",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-08",
+      "title": "稽古（工学部）",
+      "startTime": "19:00",
+      "endTime": "20:00",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-10",
+      "title": "稽古（工学部）",
+      "startTime": "09:30",
+      "endTime": "11:00",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-13",
+      "title": "稽古（農学部）",
+      "startTime": "19:00",
+      "endTime": "20:30",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-15",
+      "title": "稽古（工学部）",
+      "startTime": "19:00",
+      "endTime": "20:00",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-17",
+      "title": "稽古（工学部）",
+      "startTime": "09:30",
+      "endTime": "11:00",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-20",
+      "title": "稽古（農学部）",
+      "startTime": "19:00",
+      "endTime": "20:30",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-22",
+      "title": "稽古（工学部）",
+      "startTime": "19:00",
+      "endTime": "20:00",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-24",
+      "title": "稽古（工学部）",
+      "startTime": "09:30",
+      "endTime": "11:00",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-27",
+      "title": "稽古（農学部）",
+      "startTime": "19:00",
+      "endTime": "20:30",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-29",
+      "title": "稽古（工学部）",
+      "startTime": "19:00",
+      "endTime": "20:00",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-31",
+      "title": "OB総会",
+      "startTime": "",
+      "endTime": "",
+      "location": "",
+      "note": ""
+    },
+    {
+      "date": "2026-10-31",
+      "title": "稽古（工学部）",
+      "startTime": "09:30",
+      "endTime": "11:00",
+      "location": "",
+      "note": ""
+    }
   ]
 }
