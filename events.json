@@ -121,7 +121,7 @@
       "location": "",
       "note": "",
       "bgColor": "#ffffff",
-      "textColor": "#222222",
+      "textColor": "#000000",
       "fontSize": "14",
       "fontWeight": "400"
     },
@@ -133,31 +133,31 @@
       "location": "",
       "note": "",
       "bgColor": "#ffffff",
-      "textColor": "#222222",
+      "textColor": "#000000",
       "fontSize": "14",
       "fontWeight": "400"
     },
     {
       "date": "2026-11-06",
       "title": "稽古(工学部)",
-      "startTime": "5:25",
-      "endTime": "6:26",
+      "startTime": "05:25",
+      "endTime": "06:26",
       "location": "工学部",
       "note": "",
-      "bgColor": "#a75252",
-      "textColor": "#913b3b",
-      "fontSize": "16",
-      "fontWeight": "600"
+      "bgColor": "#ffffff",
+      "textColor": "#000000",
+      "fontSize": "14",
+      "fontWeight": "400"
     },
     {
       "date": "2026-11-07",
       "title": "稽古（工学部）",
-      "startTime": "9:30",
+      "startTime": "09:30",
       "endTime": "11:00",
       "location": "",
       "note": "",
       "bgColor": "#ffffff",
-      "textColor": "#222222",
+      "textColor": "#000000",
       "fontSize": "14",
       "fontWeight": "400"
     },
@@ -169,19 +169,19 @@
       "location": "",
       "note": "",
       "bgColor": "#ffffff",
-      "textColor": "#222222",
+      "textColor": "#000000",
       "fontSize": "14",
       "fontWeight": "400"
     },
     {
       "date": "2026-11-14",
       "title": "稽古（工学部）",
-      "startTime": "9:30",
+      "startTime": "09:30",
       "endTime": "11:00",
       "location": "",
       "note": "",
       "bgColor": "#ffffff",
-      "textColor": "#222222",
+      "textColor": "#000000",
       "fontSize": "14",
       "fontWeight": "400"
     },
@@ -193,7 +193,7 @@
       "location": "",
       "note": "",
       "bgColor": "#ffffff",
-      "textColor": "#222222",
+      "textColor": "#000000",
       "fontSize": "14",
       "fontWeight": "400"
     },
@@ -205,26 +205,26 @@
       "location": "",
       "note": "",
       "bgColor": "#ffffff",
-      "textColor": "#222222",
+      "textColor": "#000000",
       "fontSize": "14",
       "fontWeight": "400"
     },
     {
       "date": "2026-11-28",
       "title": "稽古（工学部）",
-      "startTime": "9:30",
+      "startTime": "09:30",
       "endTime": "11:00",
       "location": "",
       "note": "",
       "bgColor": "#ffffff",
-      "textColor": "#222222",
+      "textColor": "#000000",
       "fontSize": "14",
       "fontWeight": "400"
     }
   ],
   "settings": {
-    "dateSize": "14",
     "dateColor": "#333333",
+    "dateSize": "14",
     "calendarBg": "#ffffff",
     "weekdayColor": "#555555"
   }
