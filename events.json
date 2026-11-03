@@ -224,8 +224,8 @@
   ],
   "settings": {
     "dateColor": "#333333",
-    "dateSize": "14",
     "calendarBg": "#ffffff",
-    "weekdayColor": "#555555"
+    "weekdayColor": "#555555",
+    "dateSize": "14"
   }
 }
