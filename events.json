@@ -119,7 +119,11 @@
       "startTime": "19:00",
       "endTime": "20:00",
       "location": "",
-      "note": ""
+      "note": "",
+      "bgColor": "#ffffff",
+      "textColor": "#222222",
+      "fontSize": "14",
+      "fontWeight": "400"
     },
     {
       "date": "2026-11-05",
@@ -127,7 +131,11 @@
       "startTime": "18:30",
       "endTime": "20:00",
       "location": "",
-      "note": ""
+      "note": "",
+      "bgColor": "#ffffff",
+      "textColor": "#222222",
+      "fontSize": "14",
+      "fontWeight": "400"
     },
     {
       "date": "2026-11-06",
@@ -135,7 +143,11 @@
       "startTime": "5:25",
       "endTime": "6:26",
       "location": "工学部",
-      "note": ""
+      "note": "",
+      "bgColor": "#a75252",
+      "textColor": "#913b3b",
+      "fontSize": "16",
+      "fontWeight": "600"
     },
     {
       "date": "2026-11-07",
@@ -143,7 +155,11 @@
       "startTime": "9:30",
       "endTime": "11:00",
       "location": "",
-      "note": ""
+      "note": "",
+      "bgColor": "#ffffff",
+      "textColor": "#222222",
+      "fontSize": "14",
+      "fontWeight": "400"
     },
     {
       "date": "2026-11-12",
@@ -151,7 +167,11 @@
       "startTime": "18:30",
       "endTime": "20:00",
       "location": "",
-      "note": ""
+      "note": "",
+      "bgColor": "#ffffff",
+      "textColor": "#222222",
+      "fontSize": "14",
+      "fontWeight": "400"
     },
     {
       "date": "2026-11-14",
@@ -159,7 +179,11 @@
       "startTime": "9:30",
       "endTime": "11:00",
       "location": "",
-      "note": ""
+      "note": "",
+      "bgColor": "#ffffff",
+      "textColor": "#222222",
+      "fontSize": "14",
+      "fontWeight": "400"
     },
     {
       "date": "2026-11-19",
@@ -167,7 +191,11 @@
       "startTime": "18:30",
       "endTime": "20:00",
       "location": "",
-      "note": ""
+      "note": "",
+      "bgColor": "#ffffff",
+      "textColor": "#222222",
+      "fontSize": "14",
+      "fontWeight": "400"
     },
     {
       "date": "2026-11-26",
@@ -175,7 +203,11 @@
       "startTime": "18:30",
       "endTime": "20:00",
       "location": "",
-      "note": ""
+      "note": "",
+      "bgColor": "#ffffff",
+      "textColor": "#222222",
+      "fontSize": "14",
+      "fontWeight": "400"
     },
     {
       "date": "2026-11-28",
@@ -183,7 +215,11 @@
       "startTime": "9:30",
       "endTime": "11:00",
       "location": "",
-      "note": ""
+      "note": "",
+      "bgColor": "#ffffff",
+      "textColor": "#222222",
+      "fontSize": "14",
+      "fontWeight": "400"
     }
   ],
   "settings": {
