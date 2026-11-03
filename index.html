@@ -127,11 +127,43 @@ button[aria-pressed="true"] {
   overflow-wrap: anywhere;
 }
 
-/* OB稽古会・OB総会は赤字の太字で強調 */
+/* OB総会・OB稽古会は通常の稽古より大きく太字で表示 */
 .event-ob .event-title,
 .day-event.event-ob {
-  color: #c62828;
+  font-size: 1.1rem;
   font-weight: 800;
+  color: var(--ink);
+}
+
+/* リスト表示：OB総会は薄い赤、OB稽古会は薄い緑 */
+.event-ob-general {
+  background: #fff0f0;
+}
+
+.event-ob-practice {
+  background: #edf7ef;
+}
+
+/* カレンダー表示：該当日の背景色 */
+.day.day-ob-general {
+  background: #fff0f0;
+}
+
+.day.day-ob-practice {
+  background: #edf7ef;
+}
+
+/* 同じ日にOB総会とOB稽古会がある場合は日付枠を中立にし、予定ごとに色分け */
+.day.day-ob-mixed {
+  background: #fff;
+}
+
+.day-event.event-ob-general {
+  background: #fce1e1;
+}
+
+.day-event.event-ob-practice {
+  background: #dff0e2;
 }
 
 .details {
@@ -393,9 +425,15 @@ function renderList(events) {
         e.note || ""
       ].filter(Boolean).join(" ・ ");
 
-      const isObEvent = e.title.startsWith("OB稽古会") || e.title === "OB総会";
+      const isObGeneral = e.title === "OB総会";
+      const isObPractice = e.title.startsWith("OB稽古会");
+      const obClass = isObGeneral
+        ? "event-ob event-ob-general"
+        : isObPractice
+          ? "event-ob event-ob-practice"
+          : "";
       return `
-        <li class="event ${isObEvent ? "event-ob" : ""}">
+        <li class="event ${obClass}">
           <div class="date">${escapeHTML(fmtDate(dateOf(e)))}</div>
           <div>
             <div class="event-title">${escapeHTML(e.title)}</div>
@@ -432,14 +470,29 @@ function renderCalendar(events) {
       `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
 
     const today = events.filter(e => e.date === key);
+    const hasObGeneral = today.some(e => e.title === "OB総会");
+    const hasObPractice = today.some(e => e.title.startsWith("OB稽古会"));
+    const dayObClass = hasObGeneral && hasObPractice
+      ? "day-ob-mixed"
+      : hasObGeneral
+        ? "day-ob-general"
+        : hasObPractice
+          ? "day-ob-practice"
+          : "";
 
     html += `
-      <div class="day ${d.getMonth() !== m ? "other" : ""}">
+      <div class="day ${d.getMonth() !== m ? "other" : ""} ${dayObClass}">
         <div class="day-num">${d.getDate()}</div>
         ${today.map(e => {
-          const isObEvent = e.title.startsWith("OB稽古会") || e.title === "OB総会";
+          const isObGeneral = e.title === "OB総会";
+          const isObPractice = e.title.startsWith("OB稽古会");
+          const obClass = isObGeneral
+            ? "event-ob event-ob-general"
+            : isObPractice
+              ? "event-ob event-ob-practice"
+              : "";
           return `
-          <span class="day-event ${isObEvent ? "event-ob" : ""}" title="${escapeHTML(e.title)}">
+          <span class="day-event ${obClass}" title="${escapeHTML(e.title)}">
             ${escapeHTML(e.startTime ? e.startTime + " " : "")}${escapeHTML(e.title)}
           </span>
         `;
