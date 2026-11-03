@@ -339,14 +339,6 @@ footer {
 </main>
 
 <script>
-const ALLOWED = new Set([
-  "稽古（工学部）",
-  "稽古（農学部）",
-  "OB稽古会（工学部）",
-  "OB稽古会（農学部）",
-  "OB総会"
-]);
-
 const state = {
   events: [],
   view: "list",
@@ -371,6 +363,25 @@ const escapeHTML = s =>
 
 const dateOf = e => new Date(`${e.date}T00:00:00`);
 
+function refreshTypeFilter() {
+  const select = $("typeFilter");
+  const previous = select.value;
+  const titles = [...new Set(
+    state.events
+      .map(event => event.title)
+      .filter(title => typeof title === "string" && title.trim())
+  )].sort((a, b) => a.localeCompare(b, "ja"));
+
+  select.replaceChildren(new Option("すべての予定", "all"));
+  for (const title of titles) {
+    select.add(new Option(title, title));
+  }
+
+  if (titles.includes(previous)) {
+    select.value = previous;
+  }
+}
+
 const fmtDate = d =>
   `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${"日月火水木金土"[d.getDay()]}）`;
 
@@ -379,8 +390,7 @@ function visibleEvents() {
 
   return state.events
     .filter(e =>
-      ALLOWED.has(e.title) &&
-      (type === "all" || e.title === type)
+      type === "all" || e.title === type
     )
     .filter(e =>
       dateOf(e).getFullYear() === state.month.getFullYear() &&
@@ -555,6 +565,7 @@ fetch("./events.json", { cache: "no-store" })
   })
   .then(data => {
     state.events = Array.isArray(data.events) ? data.events : [];
+    refreshTypeFilter();
 
     if (data.demo === true) {
       state.error =
