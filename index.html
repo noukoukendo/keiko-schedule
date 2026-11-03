@@ -385,6 +385,33 @@ function refreshTypeFilter() {
 const fmtDate = d =>
   `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日（${"日月火水木金土"[d.getDay()]}）`;
 
+// GASで設定した予定ごとの表示スタイルを安全に反映
+function eventStyle(e) {
+  const styles = [];
+  if (/^#[0-9a-fA-F]{6}$/.test(e.bgColor || "")) {
+    styles.push(`background-color:${e.bgColor}`);
+  }
+  return styles.join(";");
+}
+
+function eventTextStyle(e) {
+  const styles = [];
+  if (/^#[0-9a-fA-F]{6}$/.test(e.textColor || "")) {
+    styles.push(`color:${e.textColor}`);
+  }
+  if (/^\d{1,2}$/.test(String(e.fontSize || ""))) {
+    styles.push(`font-size:${Number(e.fontSize)}px`);
+  }
+  if (/^(400|500|600|700|800|900)$/.test(String(e.fontWeight || ""))) {
+    styles.push(`font-weight:${e.fontWeight}`);
+  }
+  return styles.join(";");
+}
+
+function styleAttribute(value) {
+  return value ? ` style="${escapeHTML(value)}"` : "";
+}
+
 function visibleEvents() {
   const type = $("typeFilter").value;
 
@@ -463,10 +490,10 @@ function renderList(events) {
           ? "event-ob event-ob-practice"
           : "";
       return `
-        <li class="event ${obClass}">
+        <li class="event ${obClass}"${styleAttribute(eventStyle(e))}>
           <div class="date">${escapeHTML(fmtDate(dateOf(e)))}</div>
           <div>
-            <div class="event-title">${escapeHTML(e.title)}</div>
+            <div class="event-title"${styleAttribute(eventTextStyle(e))}>${escapeHTML(e.title)}</div>
             ${details ? `<div class="details">${escapeHTML(details)}</div>` : ""}
           </div>
         </li>
@@ -522,7 +549,7 @@ function renderCalendar(events) {
               ? "event-ob event-ob-practice"
               : "";
           return `
-          <span class="day-event ${obClass}" title="${escapeHTML(e.title)}">
+          <span class="day-event ${obClass}" title="${escapeHTML(e.title)}"${styleAttribute(eventStyle(e))}${styleAttribute(eventTextStyle(e))}>
             ${escapeHTML(e.startTime ? e.startTime + " " : "")}${escapeHTML(e.title)}
           </span>
         `;
