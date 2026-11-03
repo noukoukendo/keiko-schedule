@@ -127,12 +127,11 @@ button[aria-pressed="true"] {
   overflow-wrap: anywhere;
 }
 
-/* OB総会・OB稽古会は通常の稽古より大きく太字で表示 */
-.event-ob .event-title,
-.day-event.event-ob {
+/* OB総会のみ文字を大きく太くする。OB稽古会は通常の大きさ・太さを維持 */
+.event-ob-general .event-title,
+.day-event.event-ob-general {
   font-size: 1.1rem;
   font-weight: 800;
-  color: var(--ink);
 }
 
 /* リスト表示：OB総会は薄い赤、OB稽古会は薄い緑 */
@@ -149,6 +148,10 @@ button[aria-pressed="true"] {
 
 .event-ob-practice {
   background: #edf7ef;
+}
+
+.event-ob-practice .event-title {
+  color: #2e7d32;
 }
 
 /* カレンダー表示：該当日の背景色 */
@@ -174,6 +177,7 @@ button[aria-pressed="true"] {
 
 .day-event.event-ob-practice {
   background: #dff0e2;
+  color: #2e7d32;
 }
 
 .details {
