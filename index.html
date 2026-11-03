@@ -397,6 +397,12 @@ function render() {
   $("monthLabel").textContent =
     `${state.month.getFullYear()}年${state.month.getMonth() + 1}月`;
 
+  // 表示可能な過去の範囲は当月から3年前まで
+  const now = new Date();
+  const oldestMonth = new Date(now.getFullYear() - 3, now.getMonth(), 1);
+  const currentMonth = new Date(state.month.getFullYear(), state.month.getMonth(), 1);
+  $("prevMonth").disabled = currentMonth <= oldestMonth;
+
   $("listBtn").setAttribute(
     "aria-pressed",
     state.view === "list"
