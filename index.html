@@ -399,7 +399,7 @@ function render() {
 
   // 表示可能な過去の範囲は当月から3年前まで
   const now = new Date();
-  const oldestMonth = new Date(now.getFullYear() - 3, now.getMonth(), 1);
+  const oldestMonth = new Date(now.getFullYear() - 10, now.getMonth(), 1);
   const currentMonth = new Date(state.month.getFullYear(), state.month.getMonth(), 1);
   $("prevMonth").disabled = currentMonth <= oldestMonth;
 
